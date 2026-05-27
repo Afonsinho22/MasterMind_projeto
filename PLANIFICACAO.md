@@ -20,9 +20,10 @@ O programa será um MasterMind onde terá de receber 4 números por parte do uti
 |  9  | Caso o palpite esteja errado, o programa deve diminuir uma tentativa. |
 | 10 | Caso o palpite esteja errado, o programa deve subtrair uma tentativa. Ex: se tem ``10`` tentativas, passa a ter ``9`` tentativas.|
 | 11 | O programa deve aceitar o palpite se este corresponder ao número sorteado.|
-| 12 | Caso o utilizador ficar sem tentativas ou se acertar o número sorteado, o programa deve terminar a ronda, dizer qual era o número sorteado (no caso de não ter acertado) e perguntar se o utilizador pretende jogar novamente ou sair do jogo.|
-| 13 | Caso o utilizador escolher a opção ``jogar novamente``, o programa deve recomeçar a partir do requesito 4.|
-| 14 | Caso o utilizador escolher a opção ``Sair``, o programa deve finalizar-se.|
+| 12 | No final de cada palpite, o programa deve perguntar ao utilizador se pretende continuar a inserir um palpite ou desistir do jogo. Além disso, deve mostrar quantas tentativas faltam.
+| 13 | Caso o utilizador ficar sem tentativas ou se acertar o número sorteado, o programa deve terminar a ronda, dizer qual era o número sorteado (no caso de não ter acertado) e perguntar se o utilizador pretende jogar novamente ou sair do jogo.|
+| 14 | Caso o utilizador escolher a opção ``jogar novamente``, o programa deve recomeçar a partir do requesito 4.|
+| 15 | Caso o utilizador escolher a opção ``Sair``, o programa deve finalizar-se.|
 
 
 
@@ -35,7 +36,8 @@ O programa será um MasterMind onde terá de receber 4 números por parte do uti
 | Opção do menu | ``int`` | ``1`` | ``3`` |
 | Username | ``char[]`` | ``"João"`` | -
 | Palpite do utilizador | ``int`` | ``4`` | ``3`` |
-| Jogar novamente | ``int`` | ``2``| ``3`` |
+| Palpitar novamente | ``int`` | ``1`` | ``9`` |
+| Jogar novamente | ``int`` | ``0``| ``3`` |
 
 
 ### Dados de saída:
@@ -72,6 +74,13 @@ O programa será um MasterMind onde terá de receber 4 números por parte do uti
     Tentativas restantes: 4
     ```
 
+- **Palpitar novamente**
+    ```text
+    O que pretende fazer?
+    1- Voltar a jogar
+    2- Desistir do jogo (esperemos que não o faças)
+    ```
+
 - **Número descoberto**:
     ```text
     Parabéns! Descobriste o número!!
@@ -94,5 +103,74 @@ O programa será um MasterMind onde terá de receber 4 números por parte do uti
 
 ## 4. Estruturas de dados:
 
+Neste projeto, vamos utilizar algumas estruturas de dados, nomeadamente ``arrys estáticos``, ``strucs`` (utilizando o ``typedef``), ``enums`` (utilizando o ``typedef``), ``arry de strucs`` e ``constantes``.
+
+Exemplos:
+
+### ``Arry estático``:
+
+```C
+#incude <studio.h>
+
+int main(){
+    int tentativa_utilizador[4]={1,2,3,4};
+
+    return 0;
+}
+```
+
+### ``Struc``:
+```C
+typedef struct{
+    int maximo_tentativas;
+    int tentativas_ja_dadas; //pode ser usada para verificar se o utilizador já atingiu as tentativas.
+    int estado; //poderá ser substituida com os dados do enum.
+}Verificacao_tentativas;
+```
+
+### ``Enums``:
+```C
+typedef enum {
+    EM_CURSO,
+    VITORIA,
+    DERROTA,
+    DESISTENCIA
+} Estado_jogo;
+```
+
+
+### ``Arry de struct``:
+```C
+typedef struct{
+    int numeros[4];
+    int certos_posicao_errada;
+    int certos_posicao_certa;
+} Tentativas_user;
+```
+
+### ``Constante``:
+
+```C
+#define TAMANHO_NUMERO 4
+#define LIMITE_TENTATIVAS 10
+
+int main(){
+    int limite=LIMITE_TENTATIVAS;
+
+    return 0;
+}
+```
 
 ## 5. Funções
+
+Funções que serão usadas:  
+| Nome da possível função | Objetivo | Recebe dados? | Altera dados? | Devolve dados?
+|---|---|---|---|---|
+| `mostrarMenu()` | Mostrar o menu principal | 
+| `pedirUsername()` | Pedir o username |
+| `gerarCombinacao()` | Gerar a combinação aleatória |
+| `pedirPalpite()` | Ler os números do utilizador |
+| `verificarPalpite()` | Comparar o palpite com a combinação |
+| `mostrarTentativas()` | Mostrar tentativas restantes |
+| `jogarNovamente()` | Perguntar se deseja continuar |
+| `main()` | Controlar o programa principal |
