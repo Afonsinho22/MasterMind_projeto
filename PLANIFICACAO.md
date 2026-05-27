@@ -166,11 +166,11 @@ int main(){
 Funções que serão usadas:  
 | Nome da possível função | Objetivo | Recebe dados? | Altera dados? | Devolve dados?
 |---|---|---|---|---|
-| `mostrarMenu()` | Mostrar o menu principal | 
-| `pedirUsername()` | Pedir o username |
-| `gerarCombinacao()` | Gerar a combinação aleatória |
-| `pedirPalpite()` | Ler os números do utilizador |
-| `verificarPalpite()` | Comparar o palpite com a combinação |
-| `mostrarTentativas()` | Mostrar tentativas restantes |
-| `jogarNovamente()` | Perguntar se deseja continuar |
-| `main()` | Controlar o programa principal |
+| `mostrarMenu()` | Mostrar o menu principal | Não | Não | Sim (com o int)
+| `pedirUsername()` | Pedir o username | Sim (com o char) | Sim (fica guardado no array) | Não (fica como void)
+| `gerarCombinacao()` | Gerar a combinação aleatória | Sim (com o int) | Sim (vai preencher o array) | Não (fica como void)
+| `pedirPalpite()` | Ler os números do utilizador | Sim (com o int) | Sim (vai preencher o array) | Não (fica como void)
+| `verificarPalpite()` | Comparar o palpite com a combinação | Sim (usando palpite[], combinacao[]) | Sim (resultado da verificação) | Sim (com o int ou struct)
+| `mostrarTentativas()` | Mostrar tentativas restantes | Sim (com o int) | Não | Não (fica como void)
+| `jogarNovamente()` | Perguntar se deseja continuar | Não | Não | Sim (com o int)
+| `main()` | Controlar o programa principal | Não | Não | Sim (com o int)
