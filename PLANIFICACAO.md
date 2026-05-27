@@ -24,3 +24,16 @@ O programa será um MasterMind onde terá de receber 4 números por parte do uti
 | 13 | Caso o utilizador escolher a opção ``jogar novamente``, o programa deve recomeçar a partir do requesito 4.|
 | 14 | Caso o utilizador escolher a opção ``Sair``, o programa deve finalizar-se.|
 
+
+
+## 3. Tipos de dados: Entradas e saídas
+
+
+
+
+
+
+## 4. Estruturas de dados:
+
+
+## 5. Funções
