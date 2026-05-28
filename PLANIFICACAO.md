@@ -77,7 +77,7 @@ O programa será um MasterMind onde terá de receber 4 números por parte do uti
 - **Palpitar novamente**
     ```text
     O que pretende fazer?
-    1- Voltar a jogar
+    1- Dar um novo palpite
     2- Desistir do jogo (esperemos que não o faças)
     ```
 
