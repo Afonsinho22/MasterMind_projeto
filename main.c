@@ -9,15 +9,15 @@
 void pedir_username(char nome[]){
     printf("Olá!\n");
     printf("Antes de continuar, introduz um username: ");
-    nome[strcspn(nome, "\n")]='\0';
     fgets(nome, LIMITE_USERNAME, stdin);
+    nome[strcspn(nome, "\n")]='\0';
 }
 
 int menu(){
     int opcao_user_main;
     printf("Para continuar, escolhe uma opção:\n");
-    printf("1- Jogar");
-    printf("0- Sair");
+    printf("1- Jogar\n");
+    printf("0- Sair\n");
     printf("Opção -> ");
     scanf("%d", &opcao_user_main);
 
@@ -41,6 +41,17 @@ int main(){
     printf("Neste jogo, terás que adivinhar um número de 4 dígitos sorteado aleatóriamente. Os números podem repetidos.\n");
     opcao_inicial_user=menu();
 
+    //motor do jogo
+    if(opcao_inicial_user==1){
+        //resto do código
+        printf("A elaborar o programa. Espera por favor");
+    }else if(opcao_inicial_user==0){
+        printf("Obrigado por teres entrado no jogo. É uma pena teres desistido logo do jogo.\n");
+        printf("Até breve!");
+    }else{
+        printf("A opção que introduziste está inválida.");
+    }
+
 
 
 
@@ -49,7 +60,7 @@ int main(){
 
 
     //Testes:
-    
+
     //printf("Numero: %d", opcao_inicial_user);
 
     return 0;
