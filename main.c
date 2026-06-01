@@ -32,6 +32,7 @@ int main(){
     //variaveis
     char username[LIMITE_USERNAME];
     int opcao_inicial_user;
+    int ciclo_principal=1;
 
     //Solicitacao do username
     pedir_username(username);
@@ -42,14 +43,19 @@ int main(){
     opcao_inicial_user=menu();
 
     //motor do jogo
-    if(opcao_inicial_user==1){
-        //resto do código
-        printf("A elaborar o programa. Espera por favor");
-    }else if(opcao_inicial_user==0){
-        printf("Obrigado por teres entrado no jogo. É uma pena teres desistido logo do jogo.\n");
-        printf("Até breve!");
-    }else{
-        printf("A opção que introduziste está inválida.");
+    while(ciclo_principal==1){
+        if(opcao_inicial_user==1){
+            //resto do código
+            printf("A elaborar o programa. Espera por favor");
+            break;
+        }else if(opcao_inicial_user==0){
+            printf("Obrigado por teres entrado no jogo. É uma pena teres desistido logo do jogo.\n");
+            printf("Até breve!");
+            break;
+        }else{
+            printf("A opção que introduziste está inválida.");
+            opcao_inicial_user=menu();
+        }
     }
 
 
