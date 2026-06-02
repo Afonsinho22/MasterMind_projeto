@@ -5,6 +5,11 @@
 #include <locale.h>
 
 #define LIMITE_USERNAME 50
+#define TAMANHO_NUMEROS 4
+#define NUMERO_MINIMO 1
+#define NUMERO_MAXIMO 6
+
+
 
 void pedir_username(char nome[]){
     printf("Olá!\n");
@@ -23,12 +28,46 @@ int menu(){
 
     return opcao_user_main;
 }
+/*/
+neste momento tens 33 tentativas
+(introduz 0 para sair)
+> 0
+Erraste ahah!
+neste momento tens 32 tentativas
+> 6789
+/*/
 
+
+int pedir_palpite(int tentativas_user, int ciclo_jogo){
+    int opcao_tentativas;
+    printf("Neste momento, tens %d tentativas.\n", tentativas_user);
+    int palpite_utilizador[TAMANHO_NUMEROS];
+    printf("Escreve %d números, de %d até %d", TAMANHO_NUMEROS, NUMERO_MINIMO, NUMERO_MAXIMO);
+    scanf("%d %d %d %d", &palpite_utilizador[0], &palpite_utilizador[1],&palpite_utilizador[2],&palpite_utilizador[3]); 
+    //for(int i=0; i<TAMANHO_NUMEROS; i++){
+    //    scanf("%d", &palpite_utilizador[i]);
+    //}
+    for(int i=0; i<TAMANHO_NUMEROS; i++){
+        printf("%d",palpite_utilizador);
+    }
+    return palpite_utilizador[TAMANHO_NUMEROS];
+
+}     
+
+/*/
+for(int i=0; i<TAMANHO_NUMEROS; i++){
+            if(palpite_utilizador>0){
+                if(palpite_utilizador>=NUMERO_MINIMO && palpite_utilizador<=NUMERO_MAXIMO){
+                    return 
+                }
+            }
+}
+/*/
 
 int main(){
     //UTF-8
     setlocale(LC_ALL, "pt_PT.UTF-8");
-    
+        
     //variaveis
     char username[LIMITE_USERNAME];
     int opcao_inicial_user;
@@ -46,9 +85,10 @@ int main(){
     while(ciclo_principal==1){
         if(opcao_inicial_user==1){
             //resto do código
-            printf("A elaborar o programa. Espera por favor");
+            int dados_palpite=pedir_palpite(10, ciclo_principal);
+            //printf("A elaborar o programa. Espera por favor");
             break;
-        }else if(opcao_inicial_user==0){
+        } else if(opcao_inicial_user==0){
             printf("Obrigado por teres entrado no jogo. É uma pena teres desistido logo do jogo.\n");
             printf("Até breve!");
             break;
@@ -61,12 +101,7 @@ int main(){
 
 
 
-
-
-
-
     //Testes:
-
     //printf("Numero: %d", opcao_inicial_user);
 
     return 0;
