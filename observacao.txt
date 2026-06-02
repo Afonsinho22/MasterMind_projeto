@@ -1,0 +1,11 @@
+O utilizador deve escrever 4 números seguidos.
+O programa vai fazer a magia. Para obter o primeiro elemento, divide-se o número para dar o resto 10;
+No segundo número, divide-se o número para dar resto 100.
+No terceiro número, divide-se o número para dar resto 1000.
+No quarto número, divide-se o número para dar resto 10000.
+
+x=4321
+
+4321%10=432.1 (1 será elemento 1);
+432%10=43.2 (2 será elemento 2);
+e assim por adiante.
