@@ -45,9 +45,15 @@ int pedir_palpite(int tentativas_user, int ciclo_jogo){
     printf("Neste momento, tens %d tentativas.\n", tentativas_user);
     printf("Escreve %d números, de %d até %d: ", TAMANHO_NUMEROS, NUMERO_MINIMO, NUMERO_MAXIMO);
     scanf("%d", &numero_utilizador);
-    for(int i=TAMANHO_NUMEROS-1; i>=0; i--){
-        palpite_utilizador[i]=numero_utilizador%10;
-        numero_utilizador=numero_utilizador/10;
+    if(numero_utilizador==0){
+        printf("É uma pena teres abandonado o jogo a meio...\n");
+        printf("Para a próxima corre melhor.");
+        return ciclo_jogo=0;
+    }else{
+        for(int i=TAMANHO_NUMEROS-1; i>=0; i--){
+            palpite_utilizador[i]=numero_utilizador%10;
+            numero_utilizador=numero_utilizador/10;
+        }
     }
 
     
