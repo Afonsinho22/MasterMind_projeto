@@ -43,12 +43,12 @@ int pedir_palpite(int tentativas_user, int ciclo_jogo){
     int palpite_utilizador[TAMANHO_NUMEROS];
     int numero_utilizador;
     printf("Neste momento, tens %d tentativas.\n", tentativas_user);
-    printf("Escreve %d números, de %d até %d: ", TAMANHO_NUMEROS, NUMERO_MINIMO, NUMERO_MAXIMO);
+    printf("Escreve %d números, de %d até %d ou 0 para para desistires: ", TAMANHO_NUMEROS, NUMERO_MINIMO, NUMERO_MAXIMO);
     scanf("%d", &numero_utilizador);
     if(numero_utilizador==0){
         printf("É uma pena teres abandonado o jogo a meio...\n");
         printf("Para a próxima corre melhor.");
-        return ciclo_jogo=0;
+        return 0;
     }else{
         for(int i=TAMANHO_NUMEROS-1; i>=0; i--){
             palpite_utilizador[i]=numero_utilizador%10;
@@ -98,8 +98,11 @@ int main(){
         if(opcao_inicial_user==1){
             //resto do código
             int dados_palpite=pedir_palpite(10, ciclo_principal);
+            if(dados_palpite==0){
+                break;
+            }
             //printf("A elaborar o programa. Espera por favor");
-            break;
+            //break;
         } else if(opcao_inicial_user==0){
             printf("Obrigado por teres entrado no jogo. É uma pena teres desistido logo do jogo.\n");
             printf("Até breve!");
