@@ -49,11 +49,7 @@ int pedir_palpite(int tentativas_user, int ciclo_jogo){
         palpite_utilizador[i]=numero_utilizador%10;
         numero_utilizador=numero_utilizador/10;
     }
-    //scanf("%d %d %d %d", &palpite_utilizador[0], &palpite_utilizador[1],&palpite_utilizador[2],&palpite_utilizador[3]); 
-    //for(int i=0; i<TAMANHO_NUMEROS; i++){
-    //    scanf("%d", &palpite_utilizador[i]);
-    //}
-    
+
     
     for(int i=0; i<TAMANHO_NUMEROS; i++){
         printf("%d",palpite_utilizador[i]);
@@ -61,6 +57,8 @@ int pedir_palpite(int tentativas_user, int ciclo_jogo){
     return palpite_utilizador[TAMANHO_NUMEROS];
 
 }     
+
+
 
 /*/
 for(int i=0; i<TAMANHO_NUMEROS; i++){
