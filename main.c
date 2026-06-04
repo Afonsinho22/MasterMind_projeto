@@ -37,6 +37,30 @@ neste momento tens 32 tentativas
 > 6789
 /*/
 
+void gerarCombinacao(int combinacao[]){
+    int i, j;
+    int numero;
+    int repetido;
+
+    for(i = 0; i < TAMANHO_NUMEROS; i++){
+
+        do{
+            numero = rand() % 6 + 1; // números entre 1 e 6
+
+            repetido = 0;
+
+            for(j = 0; j < i; j++){
+                if(combinacao[j] == numero){
+                    repetido = 1;
+                    break;
+                }
+            }
+
+        }while(repetido);
+
+        combinacao[i] = numero;
+    }
+}
 
 int pedir_palpite(int tentativas_user, int ciclo_jogo){
     int opcao_tentativas;
