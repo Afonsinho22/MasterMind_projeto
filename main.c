@@ -9,7 +9,15 @@
 #define NUMERO_MINIMO 1
 #define NUMERO_MAXIMO 6
 
+typedef enum{
+    NO_MENU,
+    EM_CURSO,
+    VITORIA,
+    DERROTA,
+    DESISTIU
+}Estados;
 
+Estados estado_jogo=NO_MENU;
 
 void pedir_username(char nome[]){
     printf("Olá!\n");
@@ -45,7 +53,7 @@ void gerarCombinacao(int combinacao[]){
     for(i = 0; i < TAMANHO_NUMEROS; i++){
 
         do{
-            numero = rand() % 6 + 1; // números entre 1 e 6
+            numero = rand() % 6 + 1;
 
             repetido = 0;
 
@@ -60,6 +68,37 @@ void gerarCombinacao(int combinacao[]){
 
         combinacao[i] = numero;
     }
+}
+
+int pedir_palpite_neves(int palpite[]){
+    int numero;
+
+    printf("\nEscreve %d números entre %d e %d (ou 0 para desistir): ",TAMANHO_NUMEROS,NUMERO_MINIMO,NUMERO_MAXIMO);
+
+    scanf("%d", &numero);
+
+    if(numero == 0){
+        return 0;
+    }
+
+    for(int i = TAMANHO_NUMEROS - 1; i >= 0; i--){
+        palpite[i] = numero % 10;
+        numero /= 10;
+    }
+
+    return 1;
+}
+
+
+int verificarCombinacao(int combinacao[], int palpite[]){
+
+    for(int i = 0; i < TAMANHO_NUMEROS; i++){
+        if(combinacao[i] != palpite[i]){
+            return 0;
+        }
+    }
+
+    return 1;
 }
 
 int pedir_palpite(int tentativas_user, int ciclo_jogo){
