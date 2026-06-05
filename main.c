@@ -101,27 +101,48 @@ int pedir_palpite(int tentativas_user, int ciclo_jogo){
             palpite_utilizador[i]=numero_utilizador%10;
             numero_utilizador=numero_utilizador/10;
         }
+        return palpite_utilizador;
     }
-    
-    
-    //    for(int i=0; i<TAMANHO_NUMEROS; i++){
-        //        printf("%d",palpite_utilizador[i]);
-        //    }
-        return palpite_utilizador[TAMANHO_NUMEROS];
+
+}   
+
+int verificarCombinacao(int combinacao[], int palpite[], Posicao_numeros *calc_posicoes){
+    calc_posicoes->certos_posicao_certa=0;
+    calc_posicoes->certos_posicao_errada=0;
+
+    if(combinacao==palpite){
+        printf("\nParabéns %s!\n", username);
+        printf("Acertaste na combinação!\n");
         
-    }     
-int verificarCombinacao(int combinacao[], int palpite[]){
-    
+    }else{
         for(int i = 0; i < TAMANHO_NUMEROS; i++){
+            if(palpite[i]<1 && palpite[i]>6){
+                printf("Erro: O número inserido não está entre 1 e 6\n");
+                printf("Vê se não voltes a cometer este erro.");
+                break;
+            }
+        for(int i = 0; i < TAMANHO_NUMEROS; i++){
+            calc_posicoes->num_user[i]=palpite[i];
             if(combinacao[i] == palpite[i]){
-                printf("\nParabéns %s!\n", username);
-                printf("Acertaste na combinação!\n");
+                calc_posicoes->certos_posicao_certa++;
                 return 0;
-            }else{
-                printf("Não acertaste no número!");
-                //falta a implementação de quantos números estão na posição certa ou errada.
+            }else if(combinacao[i]!=palpite[i]){
+                for(int j=0; j<TAMANHO_NUMEROS; j++){
+                    if(j!=i&&palpite[i]==combinacao[j]){
+                        calc_posicoes->certos_posicao_errada++;
+                        break;
+                    }
+                }
+                printf("Não acertaste no número!\n");
+                printf("Tens %d números no sítio certos.\n", calc_posicoes->certos_posicao_certa);
+                printf("Tens %d números na sítio errado.\n", calc_posicoes->certos_posicao_errada);
+            }
+            else{
+                printf("Ocurreu um erro inesperado ou não cumpriste os requesitos.");
             }
         }
+
+    }
     
         return 1;
     }
