@@ -90,16 +90,6 @@ int pedir_palpite_neves(int palpite[]){
 }
 
 
-int verificarCombinacao(int combinacao[], int palpite[]){
-
-    for(int i = 0; i < TAMANHO_NUMEROS; i++){
-        if(combinacao[i] != palpite[i]){
-            return 0;
-        }
-    }
-
-    return 1;
-}
 
 int pedir_palpite(int tentativas_user, int ciclo_jogo){
     int opcao_tentativas;
@@ -118,16 +108,26 @@ int pedir_palpite(int tentativas_user, int ciclo_jogo){
             numero_utilizador=numero_utilizador/10;
         }
     }
-
     
-    for(int i=0; i<TAMANHO_NUMEROS; i++){
-        printf("%d",palpite_utilizador[i]);
+    
+    //    for(int i=0; i<TAMANHO_NUMEROS; i++){
+        //        printf("%d",palpite_utilizador[i]);
+        //    }
+        return palpite_utilizador[TAMANHO_NUMEROS];
+        
+    }     
+int verificarCombinacao(int combinacao[], int palpite[]){
+    
+        for(int i = 0; i < TAMANHO_NUMEROS; i++){
+            if(combinacao[i] != palpite[i]){
+                return 0;
+            }
+        }
+    
+        return 1;
     }
-    return palpite_utilizador[TAMANHO_NUMEROS];
-
-}     
-
-
+    
+    
 
 /*/
 for(int i=0; i<TAMANHO_NUMEROS; i++){
@@ -160,10 +160,12 @@ int main(){
     while(ciclo_principal==1){
         if(opcao_inicial_user==1){
             //resto do código
+            int combinacao[TAMANHO_NUMEROS];
             int dados_palpite=pedir_palpite(10, ciclo_principal);
             if(dados_palpite==0){
                 break;
             }
+
             //printf("A elaborar o programa. Espera por favor");
             //break;
         } else if(opcao_inicial_user==0){
