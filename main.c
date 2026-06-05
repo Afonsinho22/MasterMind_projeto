@@ -101,7 +101,8 @@ int pedir_palpite(int tentativas_user, int ciclo_jogo){
             palpite_utilizador[i]=numero_utilizador%10;
             numero_utilizador=numero_utilizador/10;
         }
-        return palpite_utilizador;
+        return *palpite_utilizador;
+        return 1;
     }
 
 }   
@@ -146,7 +147,7 @@ int verificarCombinacao(int combinacao[], int palpite[], Posicao_numeros *calc_p
     
         return 1;
     }
-    
+}  
 
 
 /*/
@@ -184,6 +185,7 @@ int main(){
             if(dados_palpite==0){
                 break;
             }
+            
 
             //printf("A elaborar o programa. Espera por favor");
             //break;
