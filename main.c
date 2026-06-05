@@ -23,7 +23,7 @@ typedef struct{
 }Verificacao_tentativas;
 
 typedef struct{
-    int num_user;
+    int num_user[TAMANHO_NUMEROS];
     int certos_posicao_certa;
     int certos_posicao_errada;
 }Posicao_numeros;
