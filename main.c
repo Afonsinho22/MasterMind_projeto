@@ -18,6 +18,7 @@ typedef enum{
 }Estados;
 
 Estados estado_jogo=NO_MENU;
+char username[LIMITE_USERNAME];
 
 void pedir_username(char nome[]){
     printf("Olá!\n");
@@ -99,15 +100,20 @@ int pedir_palpite(int tentativas_user, int ciclo_jogo){
 int verificarCombinacao(int combinacao[], int palpite[]){
     
         for(int i = 0; i < TAMANHO_NUMEROS; i++){
-            if(combinacao[i] != palpite[i]){
+            if(combinacao[i] == palpite[i]){
+                printf("\nParabéns %s!\n", username);
+                printf("Acertaste na combinação!\n");
                 return 0;
+            }else{
+                printf("Não acertaste no número!");
+                //falta a implementação de quantos números estão na posição certa ou errada.
             }
         }
     
         return 1;
     }
     
-    
+
 
 /*/
 for(int i=0; i<TAMANHO_NUMEROS; i++){
@@ -124,7 +130,6 @@ int main(){
     setlocale(LC_ALL, "pt_PT.UTF-8");
         
     //variaveis
-    char username[LIMITE_USERNAME];
     int opcao_inicial_user;
     int ciclo_principal=1;
 
