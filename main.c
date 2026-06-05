@@ -165,7 +165,7 @@ int verificarCombinacao(int combinacao[],
 
 int main()
 {
-    setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "pt_PT.UTF-8");
     srand(time(NULL));
 
     pedir_username(username);
