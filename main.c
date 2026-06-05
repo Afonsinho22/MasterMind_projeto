@@ -58,7 +58,7 @@ int menu()
     return opcao;
 }
 
-void gerarCombinacao(int combinacao[])
+void gerar_combinacao(int combinacao[])
 {
     int i, j;
     int numero;
@@ -133,7 +133,7 @@ int pedir_palpite(int palpite[])
     return 1;
 }
 
-int verificarCombinacao(int combinacao[],int palpite[],Posicao_numeros *resultado)
+int verificar_combinacao(int combinacao[],int palpite[],Posicao_numeros *resultado)
 {
     resultado->certos_posicao_certa = 0;
     resultado->certos_posicao_errada = 0;
@@ -238,7 +238,7 @@ int main()
         Tentativas tentativas;
         Estados estado_partida = EM_CURSO;
 
-        gerarCombinacao(combinacao);
+        gerar_combinacao(combinacao);
         tentativas.maximo_tentativas = MAX_TENTATIVAS;
         tentativas.tentativas_restantes = MAX_TENTATIVAS;
 
@@ -287,7 +287,7 @@ int main()
                 continue;
             }
 
-            if(verificarCombinacao(combinacao, palpite, &resultado))
+            if(verificar_combinacao(combinacao, palpite, &resultado))
             {
                 estado_partida = VITORIA;
                 printf("\nParabéns %s!\n", username);
