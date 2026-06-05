@@ -81,16 +81,20 @@ int pedir_palpite(int palpite[])
         printf("\nIntroduz 4 números entre 1 e 6 (ou 0 para desistir): ");
         fgets(entrada, sizeof(entrada), stdin);
         entrada[strcspn(entrada, "\n")] = '\0';
+
         if(strcmp(entrada, "0") == 0)
         {
             return 0;
         }
+
         if(strlen(entrada) != 4)
         {
             printf("Erro: tens de introduzir exatamente 4 dígitos.\n");
             continue;
         }
+
         int valido = 1;
+
         for(int i = 0; i < TAMANHO_NUMEROS; i++)
         {
             if(!isdigit(entrada[i]))
@@ -98,7 +102,9 @@ int pedir_palpite(int palpite[])
                 valido = 0;
                 break;
             }
+
             palpite[i] = entrada[i] - '0';
+
             if(palpite[i] < 1 || palpite[i] > 6)
             {
                 valido = 0;
@@ -111,6 +117,7 @@ int pedir_palpite(int palpite[])
             printf("Erro: só são permitidos números entre 1 e 6.\n");
             continue;
         }
+
         return 1;
     }
 }
@@ -152,6 +159,7 @@ int verificarCombinacao(int combinacao[],
     {
         return 1;
     }
+
     return 0;
 }
 
@@ -159,7 +167,9 @@ int main()
 {
     setlocale(LC_ALL, "");
     srand(time(NULL));
+
     pedir_username(username);
+
     printf("\nOlá %s!\n", username);
     printf("Bem-vindo ao MasterMind!\n");
     printf("Tens de adivinhar uma combinação de 4 números.\n");
@@ -167,63 +177,103 @@ int main()
     printf("Os números da combinação não se repetem.\n");
 
     int opcao = menu();
+
     if(opcao == 0)
     {
         printf("Até breve!\n");
         return 0;
     }
+
     if(opcao != 1)
     {
         printf("Opção inválida.\n");
         return 0;
     }
 
-    int combinacao[TAMANHO_NUMEROS];
-    int palpite[TAMANHO_NUMEROS];
-    Posicao_numeros resultado;
-    gerarCombinacao(combinacao);
-    int tentativas = MAX_TENTATIVAS;
-    while(tentativas > 0)
+    while(1)
     {
-        printf("\n=====================================\n");
-        printf("Tentativas restantes: %d\n", tentativas);
-        printf("=====================================\n");
-        int estado = pedir_palpite(palpite);
-        if(estado == 0)
-        {
-            printf("\nDesististe do jogo.\n");
-            printf("A combinação era: ");
+        int combinacao[TAMANHO_NUMEROS];
+        int palpite[TAMANHO_NUMEROS];
+        Posicao_numeros resultado;
 
-            for(int i = 0; i < TAMANHO_NUMEROS; i++)
+        gerarCombinacao(combinacao);
+
+        int tentativas = MAX_TENTATIVAS;
+
+        while(tentativas > 0)
+        {
+            printf("\n=====================================\n");
+            printf("Tentativas restantes: %d\n", tentativas);
+            printf("=====================================\n");
+
+            int estado = pedir_palpite(palpite);
+
+            if(estado == 0)
             {
-                printf("%d", combinacao[i]);
+                printf("\nDesististe do jogo.\n");
+                printf("A combinação era: ");
+
+                for(int i = 0; i < TAMANHO_NUMEROS; i++)
+                {
+                    printf("%d", combinacao[i]);
+                }
+
+                printf("\n");
+                break;
             }
 
-            printf("\n");
-            break;
-        }
-        if(verificarCombinacao(combinacao,
-                               palpite,
-                               &resultado))
-        {
-            printf("\nParabéns %s!\n", username);
-            printf("Acertaste na combinação!\n");
-            break;
-        }
-        tentativas--;
-        if(tentativas == 0)
-        {
-            printf("\nFicaste sem tentativas!\n");
-            printf("A combinação correta era: ");
-
-            for(int i = 0; i < TAMANHO_NUMEROS; i++)
+            if(verificarCombinacao(combinacao,
+                                   palpite,
+                                   &resultado))
             {
-                printf("%d", combinacao[i]);
+                printf("\nParabéns %s!\n", username);
+                printf("Acertaste na combinação!\n");
+                break;
             }
 
-            printf("\n");
+            tentativas--;
+
+            if(tentativas == 0)
+            {
+                printf("\nFicaste sem tentativas!\n");
+                printf("A combinação correta era: ");
+
+                for(int i = 0; i < TAMANHO_NUMEROS; i++)
+                {
+                    printf("%d", combinacao[i]);
+                }
+
+                printf("\n");
+                break;
+            }
+        }
+
+        int jogar_novamente;
+
+        do
+        {
+            printf("\nQueres jogar novamente?\n");
+            printf("1 - Sim\n");
+            printf("0 - Não\n");
+            printf("Opção -> ");
+
+            scanf("%d", &jogar_novamente);
+
+            while(getchar() != '\n');
+
+            if(jogar_novamente != 0 && jogar_novamente != 1)
+            {
+                printf("Opção inválida! Escolhe 0 ou 1.\n");
+            }
+
+        } while(jogar_novamente != 0 && jogar_novamente != 1);
+
+        if(jogar_novamente == 0)
+        {
+            printf("\nObrigado por jogar o nosso jogo, até em breve!\n");
             break;
         }
     }
+
     return 0;
 }
