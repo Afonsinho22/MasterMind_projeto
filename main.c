@@ -70,26 +70,6 @@ void gerarCombinacao(int combinacao[]){
     }
 }
 
-int pedir_palpite_neves(int palpite[]){
-    int numero;
-
-    printf("\nEscreve %d números entre %d e %d (ou 0 para desistir): ",TAMANHO_NUMEROS,NUMERO_MINIMO,NUMERO_MAXIMO);
-
-    scanf("%d", &numero);
-
-    if(numero == 0){
-        return 0;
-    }
-
-    for(int i = TAMANHO_NUMEROS - 1; i >= 0; i--){
-        palpite[i] = numero % 10;
-        numero /= 10;
-    }
-
-    return 1;
-}
-
-
 
 int pedir_palpite(int tentativas_user, int ciclo_jogo){
     int opcao_tentativas;
