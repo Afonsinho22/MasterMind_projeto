@@ -17,6 +17,19 @@ typedef enum{
     DESISTIU
 }Estados;
 
+typedef struct{
+    int maximo_tentatias;
+    int tentativas_user_dadas;
+}Verificacao_tentativas;
+
+typedef struct{
+    int num_user;
+    int certos_posicao_certa;
+    int certos_posicao_errada;
+}Posicao_numeros;
+
+
+
 Estados estado_jogo=NO_MENU;
 char username[LIMITE_USERNAME];
 
