@@ -53,7 +53,6 @@ int menu()
     printf("Opção -> ");
 
     scanf("%d", &opcao);
-
     while(getchar() != '\n');
 
     return opcao;
@@ -193,6 +192,7 @@ int jogar_novamente()
         printf("Opção -> ");
 
         scanf("%d", &opcao);
+        while(getchar() != '\n');
 
         if(opcao != 0 && opcao != 1)
         {
